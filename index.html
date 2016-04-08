@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Developer Path</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Portfolio" />
+        <meta name="keywords" content="portfolio, web development, front-end, PSD to HTML"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <style>
+			
+		</style>
+    </head>
+
+    <body>
+
+		<div class="title"></div>
+		<div class="main">
+			<p>Do You have an idea for website?</p>
+			<img src="images/web.png" alt="picture"/>
+			<p>I can help you turn your ideas to reality!</p>
+		</div>
+		<div id="cc_menu" class="cc_menu">
+		
+		<div class="cc_item" style="z-index:5">
+				<div class="first img"></div>
+				<span class="cc_title cc_content_1">About</span>
+				<div class="wrapper">
+					<div class="cc_submenu">
+						<div class="cc_submenu_top"></div>
+						<div class="cc_submenu_bottom"></div>
+					</div>
+				</div>
+			</div>
+			<div class="cc_item" style="z-index:4">
+				<div class="second img"></div>
+				<span class="cc_title cc_content_2">Portfolio</span>
+				<div class="wrapper">
+					<div class="cc_submenu">
+						<div class="cc_submenu_top"></div>
+						<div class="cc_submenu_bottom"></div>
+					</div>
+				</div>
+			</div>
+			<div class="cc_item" style="z-index:3">
+				<div class="third img"></div>
+				<span class="cc_title cc_content_3">projects</span>
+				<div class="wrapper">
+					<div class="cc_submenu">
+						<div class="cc_submenu_top"></div>
+						<div class="cc_submenu_bottom"></div>
+					</div>
+				</div>
+			</div>
+			<div class="cc_item" style="z-index:2">
+				<div class="fourth img"></div>
+				<span class="cc_title cc_content_4">services</span>
+				<div class="wrapper">
+					<div class="cc_submenu">
+						<div class="cc_submenu_top"></div>
+						<div class="cc_submenu_bottom"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="cc_item" style="z-index:1">
+				<div class="fifth img"></div>
+				<span class="cc_title cc_content_5">Contact</span>
+				<div class="wrapper">
+					<div class="cc_submenu">
+						<div class="cc_submenu_top"></div>
+						<div class="cc_submenu_bottom"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="cc_content" class="cc_content">
+				<span id="cc_back" class="cc_back">&lt;&lt; Go back</span>
+				<div class="cc_content_1">
+					<h2>About Me</h2>
+					<p>My name is Oleksandr Chernyshev.</p> 
+					<p>I am freelancer front-end developer. My only mission is to write clean elegant and efficient code to build, create, 
+						and discover beautiful web aplications .
+					</p>
+				</div>
+				<div class="cc_content_2">
+					<h2>My Portfolio.</h2>
+					<p>Coming Soon!</p>
+				</div>
+				<div class="cc_content_3">
+					<h2>My Projects</h2>
+					<ul>
+						<li>projects still in progress.
+							<ul>
+								<li>Online bookstore with library.</li>
+								<li>Online cofee store.</li>
+								<li>"Life in Quotes" - quotes that changing life.</li>
+							</ul>
+						</li>
+						<li>Done projects.
+							<ul>
+								<li>Coming Soon.</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="cc_content_4">
+					<h2>Services</h2>
+					<ul>
+						<li>Convert your PSD to W3C Valid Responsive HTML5 Template.</li>
+						<li>Convert your existing website to responsive one, with or without changing any design or contents.</li>
+					</ul>
+				</div>
+				<div class="cc_content_5">
+					<h2>Contact</h2>
+						<form action='send_email.php' method='get'>
+							<label>
+								<p>Full Name:</p>
+								<input type="text" name="Full_name" placeholder="Your Name" />
+							</label>
+							<label>
+								<p>E-mail:</p>
+								<input type="email" name="email" placeholder="Your e-mail"/>
+							</label>
+							<label>
+								<p>Subject:</p>
+								<input type="text" name="subject" placeholder="Subject"/>
+							</label>
+							<label>
+								<p>Message:</p>
+								<textarea name="message"></textarea>
+							</label>
+							<button type="submit">Send</button>
+						</form>
+				</div>
+			</div>
+		</div>
+        <!-- The JavaScript -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+            function m_enter(){
+            	$(this).find('.img').stop().animate({'top': '0'},400);
+   				$(this).find('.cc_submenu').stop().animate({'bottom': '0'},300);
+            }
+            function m_leave(){
+            	$(this).find('.img').stop().animate({'top': '-600px'},400);
+   				$(this).find('.cc_submenu').stop().animate({'bottom': '-350px'},300);
+            }
+$(".cc_item").bind ('mouseenter',m_enter);
+$(".cc_item").bind('mouseleave',m_leave);
+
+
+	$(".cc_title").click(function(){
+   		var id =  $(this).attr('class');
+   		var d = $(this).closest('.cc_item');
+   		$(d).unbind('mouseenter mouseleave');
+   				$(".cc_item").not(d).animate({'margin-left': '-150px'},600, function(){
+   					$(".cc_content").animate({'left': '150px'},300);
+   					$(".cc_content").find('div').hide();
+   					$(".cc_content").find('.'+id.slice(9,21)).show();
+   		});
+   	});
+   	$(".cc_back").click(function(){
+   		$(".cc_content").animate({'left': '-750px'},300);
+   		$(".cc_item").animate({'margin-left': '0'},500)
+   					.bind('mouseenter', m_enter)
+   					.bind('mouseleave', m_leave);
+   		$(".cc_item").find('.cc_submenu').animate({'bottom': '-350px'},300);
+   		$(".cc_item").find('.img').stop().animate({'top': '-600px'},200);
+   	});
+});
+        </script>
+    </body>
+</html>
